@@ -1,148 +1,109 @@
-# 天机妙策局.skill
+# 天机妙策局 (deep-research)
 
-> 从研究课题到高水准的政企汇报材料与双模 PPT：12位三国谋士、多文体大纲自适应、数据千分位规范、自进化闭环。
+> **自进化 AI 深度研究团队**：从研究课题到高水准政企汇报材料与符合 UI 规范的演示文稿。通过 12 位三国谋士的多角色智能协同、多文体大纲自适应、严密的数据量化换算规约与闭环自进化机制，为政企及科研用户提供一站式深度调研与三模 PPT 生成能力。
 
 <p align="center">
   <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License MIT">
   <img src="https://img.shields.io/badge/Type-Multi--Agent-blue.svg" alt="Type Multi-Agent">
-  <img src="https://img.shields.io/badge/Format-Marp%20%7C%20VBA%20%7C%20Markdown-green.svg" alt="Format Marp/VBA/MD">
+  <img src="https://img.shields.io/badge/Format-Marp%20%7C%20VBA%20%7C%20PptxGenJS-green.svg" alt="Format Marp/VBA/PptxGenJS">
   <img src="https://img.shields.io/badge/AgentSkills-Standard-orange.svg" alt="AgentSkills Standard">
 </p>
 
 ---
 
-<p align="center">
-  课题定位很高，但不知道怎么快速契合政策站位？<br>
-  写汇报材料需要亮点成效和数据瓶颈，但找不到经典的公文框架？<br>
-  对标世界一流，却缺乏清晰的数据对比维度和千分位规范？<br>
-  写完了报告，还要为手动拷字排版 PPT 幻灯片感到痛苦？<br>
-  <b>本 Skill - 🏛️ **多文体大纲自适应**：内置鲁肃的大纲规划模型，支持自动生成**深度研究报告**、**定期工作总结（月/季/年报）**、**工作专项汇报**、**项目实施方案**、**专利交底书**和**学术论文**。
-- 🎨 **三模 PPT 演示文稿生成**：自动将文字内容转化为符合 UI 规范的 **Marp Markdown 演示文稿**、一键自动排版的 **VBA 宏代码**，以及可由编译引擎直接组装生成的 **PptxGenJS 模块化代码**。
-- 📐 **可视化与数据换算规约**：自动对大额数值执行万/亿级单位换算，所有数字强制使用千分位并保留两位小数（如 `1,000.00元` / `15.50万元` / `2.06亿元`）。
-- 🔄 **第一优先级 UI 规范自适应**：以 [核心 UI 设计规范 (ui-design-spec.md)](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/references/ui-design-spec.md)（品牌绿主题体系）为**第一优先级 UI 规范**。支持“**品牌绿**”/“**品牌绿相关**”触发词自动切换对应绿色风格底色和组件规范。
-- 🔄 **闭环自进化机制**：特设 `Phase 6：复盘与自我进化` 闭环。诸葛亮会组织徐庶和曹植回顾审稿驳回点，总结并生成进化规约写入 `evolution_log.md` 中，供下次前置合并，实现系统永久性迭代。
-- 👥 **动态特邀专家 (第13人)**：针对极度垂直前沿的交叉学科课题，在 Phase 2.5 自动进化出专属特邀专家参与撰写。
+## 🌟 核心特性
+
+- 👥 **12+1 多角色协同工作流**：内置由主理人**诸葛亮**、研究架构师**鲁肃**领衔的 12 人专业研究团队。同时在 Phase 2.5 可根据极度前沿或垂直课题，动态进化出第 13 位**特邀专家**挂载专属视角。
+- 🎨 **默认品牌绿 UI 规范 PPT**：以 [核心 UI 设计规范 (ui-design-spec.md)](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/references/ui-design-spec.md)（品牌绿主题体系）为最高优先级 UI 规范。在未指定配色时默认以品牌绿（主色 `#027C76`、主品牌绿 `#07978D`、高亮 `#0FB886` 等）作为输出配色。
+- 📐 **可视化与数据换算规约**：郭嘉和徐庶会严格核验所有量化数据，自动执行万/亿级单位换算，所有数字强制保留千分位并保留两位小数（例如 `1,000.00元` / `15.50万元` / `2.06亿元`）。
+- 🖥️ **三模 PPT 演示文稿生成**：报告总撰**陈琳**在 Phase 5 自动整合并发布：
+  1. **Marp Markdown 格式**（包含 Flex 双栏、指标卡 HTML 容器等，可直接导入 AI PPT 工具渲染）。
+  2. **PowerPoint VBA 代码**（可在 PowerPoint 中运行自动排版绘制）。
+  3. **PptxGenJS 模块代码**（支持在本地 Node.js 环境一键编译组装成实体 PPTX 文件）。
+- 🔄 **闭环自进化机制 (Self-Evolution)**：特设 `Phase 6：复盘与自我进化` 闭环。系统在复盘中提炼规约自动写入 [evolution_log.md](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/evolution_log.md)，在下一次运行前自动载入合并，实现永久自迭代。
+- 💼 **多文体大纲自适应**：自动规划**深度研究报告**、**定期工作总结 (月/季/年报)**、**工作专项汇报**、**项目实施方案**、**专利交底书**和**学术论文**。
 
 ---
 
-## 快速启动
-
-**最快 1 分钟上手**：
-1. 打开 [cross-platform/orchestrator.md](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/orchestrator.md)，全选复制。
-2. 粘贴到 any AI 工具（如 ChatGPT, Claude, DeepSeek）的对话窗口中。
-3. 输入您的研究或材料撰写需求：
-   ```text
-   帮我深度调研中国新能源汽车产业的科技创新路径，重点对标特斯拉，用品牌绿配色产出二季度工作总结汇报 PPT。
-   ```
-
----
-
-## 项目结构
+## 📂 项目结构
 
 ```text
-├── cross-platform/      ← 🔑 跨平台通用（从这里开始）
-│   ├── orchestrator.md  ← 核心主控 Prompt（复制即用，已集成品牌绿触发与三模 PPT）
-│   ├── SKILL.md         ← YAML Frontmatter 技能入口描述
-│   ├── references/      ← 📚 核心设计与 API 指南
-│   │   ├── ui-design-spec.md ← 🎨 核心 UI 设计规范（原 UI_DESIGN_SPEC.md 整合版）
-│   │   ├── design-system.md  ← 设计系统规约（品牌绿默认首推）
-│   │   ├── slide-types.md    ← 5类幻灯片排版模板与子类型
-│   │   ├── pptxgenjs-api.md  ← PptxGenJS API 编写教程
-│   │   └── pitfalls.md       ← 避坑与 QA 校验流程（markitdown）
-│   ├── agents/          ← 12 个三国谋士独立角色 Prompt
-│   ├── MANUAL.md        ← 📖 详细使用与提问手册
-│   ├── evolution_log.md ← 🛠️ 自进化规约日志
-│   ├── README.md        ← 跨平台快速入门说明
-│   └── (各种 AI IDE 规则文件，如 .cursorrules, CLAUDE.md 等)
+deep-research/
+├── cross-platform/          # 🔑 跨平台通用配置及 Prompt
+│   ├── orchestrator.md      # 核心主控 Prompt (复制即用，已集成默认品牌绿与多配色支持)
+│   ├── SKILL.md             # YAML Frontmatter 技能入口描述
+│   ├── evolution_log.md     # 🛠️ 自进化规约日志
+│   ├── MANUAL.md            # 📖 详细使用与提问手册
+│   ├── references/          # 📚 核心设计与 API 指南
+│   │   ├── ui-design-spec.md  # 🎨 核心 UI 设计规范 (品牌绿默认首推)
+│   │   ├── design-system.md   # 设计系统规约 (间距、圆角与 5 大配色方案)
+│   │   ├── slide-types.md     # 5类幻灯片排版模板与子类型
+│   │   ├── pptxgenjs-api.md   # PptxGenJS API 编写教程
+│   │   └── pitfalls.md        # 避坑与 QA 校验流程 (markitdown)
+│   └── agents/              # 12 个三国谋士独立角色 Prompt
 │
-├── expert/              ← 插件包目录
-│   └── tianji-my-expert.zip  ← WorkBuddy 专属自进化专家面板（含中国风圆形头像）
+├── expert/                  # 插件包目录
+│   └── tianji-my-expert.zip # WorkBuddy 专属专家面板插件包
 │
-├── skill/               ← 技能包目录
-│   └── tianji-my-skill.zip   ← 一键导入激活团队技能
+├── skill/                   # 技能包目录
+│   └── tianji-my-skill.zip  # 一键导入激活团队技能
 │
-└── third-party/         ← 第三方引用声明
+├── README.md                # 本说明文件
+└── package.json             # 依赖声明文件
 ```
 
 ---
 
-## 六阶段自进化工作流
+## 🚀 快速启动
 
-1. **Phase 1：多维扫描调研**：贾诩（政策大局）、荀彧（成效亮点）、周瑜（行业对标）、郭嘉（数据指标）、马钧（专利格局）五线并行扫描。
-2. **Phase 2：大纲/PPT大纲规划**：鲁肃基于调研摘要规划 3-5 章大纲或 10-15 页 PPT 分页演示大纲。
-3. **Phase 2.5：特邀专家进化**：诸葛亮与鲁肃评估课题深度，动态进化出第 13 位专家。
-4. **Phase 3：逐章研究与单页 Slide 撰写**：对应研究员/专家撰写 -> 徐庶进行 8 维质量与 UI 规范审稿 -> 曹植精准修订（上限 3 轮）。
-5. **Phase 4-5：战略部署与最终交付**：司马懿输出对策与实施路线图 -> 陈琳总撰发布普通文本，或者包含 Marp、VBA、PptxGenJS 的三模演示文稿（以品牌绿 UI 规范为第一优先级）。
-6. **Phase 6：复盘与自我进化**：主编诸葛亮总结审稿日志，导出进化规约写入 `evolution_log.md`。
+### 方式一：Web AI 对话（最快捷）
+1. 打开 [cross-platform/orchestrator.md](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/orchestrator.md)，全选并复制其内容。
+2. 粘贴到任意主流 AI 聊天框（如 Claude, DeepSeek, ChatGPT, Kimi 等）中发送。
+3. 输入您的课题需求，例如：
+   ```text
+   帮我深度调研中国新能源汽车产业的科技创新路径，重点对标特斯拉，产出二季度工作总结汇报 PPT。
+   ```
 
----
+### 方式二：IDE 规则挂载（开发效率最高）
+将 `cross-platform` 中的配置文件放置在项目根目录下：
+- Cursor 工具会自动读取 `.cursorrules`
+- Claude Code 会自动读取 `CLAUDE.md`
+- Gemini / Antigravity 会自动读取 `.gemini/instructions.md`
 
-## 经典材料与可视化规范
-
-天机妙策局行文严格遵循 **“高度、深度、力度”三度标准**：
-- **政治高度**：词汇规范，聚焦主责主业，段落整饬对仗。
-- **理论深度**：段落首句**“结论先行”**，随后用“数据/案例支撑”。
-- **落地力度**：对策建议必须是**“动词 + 具体对象 + 预期结果”**的实效结构。
-
-PPT 可视化配色（第一优先级为 [ui-design-spec.md](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/references/ui-design-spec.md)）：trator.md  ← 核心主控 Prompt（复制即用，已集成品牌绿触发与三模 PPT）
-│   ├── SKILL.md         ← YAML Frontmatter 技能入口描述
-│   ├── references/      ← 📚 核心设计与 API 指南
-│   │   ├── design-system.md  ← 设计系统规约（品牌绿默认首推）
-│   │   ├── slide-types.md    ← 5类幻灯片排版模板与子类型
-│   │   ├── pptxgenjs-api.md  ← PptxGenJS API 编写教程
-│   │   └── pitfalls.md       ← 避坑与 QA 校验流程（markitdown）
-│   ├── agents/          ← 12 个三国谋士独立角色 Prompt
-│   ├── MANUAL.md        ← 📖 详细使用与提问手册
-│   ├── evolution_log.md ← 🛠️ 自进化规约日志
-│   ├── README.md        ← 跨平台快速入门说明
-│   └── (各种 AI IDE 规则文件，如 .cursorrules, CLAUDE.md 等)
-│
-├── expert/              ← 插件包目录
-│   └── tianji-my-expert.zip  ← WorkBuddy 专属自进化专家面板（含中国风圆形头像）
-│
-├── skill/               ← 技能包目录
-│   └── tianji-my-skill.zip   ← 一键导入激活团队技能
-│
-└── third-party/         ← 第三方引用声明
-```
+### 方式三：WorkBuddy 插件导入
+1. 将 [tianji-my-expert.zip](file:///Users/lan/Rules_沉淀/deep-research/expert/tianji-my-expert.zip) 导入 WorkBuddy 专家中心。
+2. 激活后，在侧边栏即可直接调度“天机妙策局”专家团队开始 6 阶段协作流程。
 
 ---
 
-## 六阶段自进化工作流
+## 📅 六阶段自进化工作流
 
-1. **Phase 1：多维扫描调研**：贾诩（政策大局）、荀彧（成效亮点）、周瑜（行业对标）、郭嘉（数据指标）、马钧（专利格局）五线并行扫描。
-2. **Phase 2：大纲/PPT大纲规划**：鲁肃基于调研摘要规划 3-5 章大纲或 10-15 页 PPT 分页演示大纲。
-3. **Phase 2.5：特邀专家进化**：诸葛亮与鲁肃评估课题深度，动态进化出第 13 位专家。
-4. **Phase 3：逐章研究与单页 Slide 撰写**：对应研究员/专家撰写 -> 徐庶进行 8 维质量与 UI 规范审稿 -> 曹植精准修订（上限 3 轮）。
-5. **Phase 4-5：战略部署与最终交付**：司马懿输出对策与实施路线图 -> 陈琳总撰发布普通文本，或者包含 Marp、VBA、PptxGenJS 的三模演示文稿（以品牌绿 UI 规范为第一优先级）。
-6. **Phase 6：复盘与自我进化**：主编诸葛亮总结审稿日志，导出进化规约写入 `evolution_log.md`。
-
----
-
-## 经典材料与可视化规范
-
-天机妙策局行文严格遵循 **“高度、深度、力度”三度标准**：
-- **政治高度**：词汇规范，聚焦主责主业，段落整饬对仗。
-- **理论深度**：段落首句**“结论先行”**，随后用“数据/案例支撑”。
-- **落地力度**：对策建议必须是**“动词 + 具体对象 + 预期结果”**的实效结构。
-
-PPT 可视化配色（第一优先级为 [UI_DESIGN_SPEC_yth.md](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/UI_DESIGN_SPEC_yth.md)）：
-- **品牌绿/品牌绿相关（默认首推）**：
-  - `primary`: `027C76` (深色/标题)
-  - `secondary`: `07978D` (主品牌色/正文)
-  - `accent`: `0FB886` (高亮/翠绿装饰)
-  - `light`: `ebf7fa` (高亮卡片背景)
-  - `bg`: `F6FBFC` (幻灯片大背景)
+1. **Phase 1：多维扫描调研**：贾诩（政策）、荀彧（成效）、周瑜（对标）、郭嘉（数据）、马钧（专利）五线并行调研，输出统一摘要。
+2. **Phase 2：大纲/PPT 分页规划**：鲁肃基于扫描摘要规划章节或 10-15 页 PPT 分页演示大纲（预设排版结构）。
+3. **Phase 2.5：特邀专家进化**：评估课题深度，动态进化出第 13 位专家。
+4. **Phase 3：单页 Slide 撰写与循环审稿**：对应角色撰写 -> 徐庶进行 8 维质量与 UI 规范审稿 -> 曹植精准修订（最多 3 轮）。
+5. **Phase 4-5：对策部署与最终交付**：司马懿输出路线图 -> 陈琳总撰并发布普通文本或三模 PPT 演示文稿（默认使用品牌绿规范配色）。
+6. **Phase 6：复盘与自我进化**：诸葛亮复盘总结，提炼新规约并自动追加至 `evolution_log.md` 中。
 
 ---
 
-## 许可与致谢
+## 🎨 PPT 配色方案
 
-本团队由 AI 驱动，重要决策请经专业人员核验。
+在进行 PPT 渲染时，默认首推符合 UI 规范的**品牌绿**。为了满足多样化需求，您也可以在指令中指定使用其他优秀配色方案：
 
-本项目部分能力参考了以下开源项目（均为 MIT 许可证），详见 [`cross-platform/ATTRIBUTION.md`](cross-platform/ATTRIBUTION.md)：
+| 配色名称 | 触发词 | 风格 / 特点 | 适用场景 |
+|---------|-------|------------|---------|
+| **品牌绿 (默认)** | 品牌绿 / 绿色主题 | 专业、稳健、双碳科技 | 大型央企相关汇报、绿色发展、政企合作 |
+| **商务权威** | 商务 / 经典 / 深蓝 | 正式、经典、深蓝背景 | 年度报告、财务分析、企业介绍 |
+| **科技之夜** | 科技 / 暗黑 / 数字化 | 深邃、极客、高对比度黄蓝 | 数字化转型、前沿技术发布、新能源 |
+| **生态自然** | 生态 / 环保 / 乡村振兴 | 大地暖色、生态绿、护眼 | 农业科技、绿色生态保护、历史文化 |
+| **白金奢华** | 高端 / 咨询 / 金融 | 极简白金底、科技蓝点缀 | 高端咨询报告、智囊团研究、金融科技 |
 
-| 引用项目 | 作者 | 许可证 | 引用范围 |
-|---------|------|-------|---------|
-| [skills-minimax (pptx-generator)](https://github.com/MiniMax-AI/skills) | MiniMax | MIT © 2026 MiniMax | PPT 生成能力（PptxGenJS 模块化架构、Slide 类型体系、设计系统、QA 流程） |
-| [patent-disclosure-skill](https://github.com/handsomestWei/patent-disclosure-skill) | handsomestWei | MIT © 2026 handsomestWei | 马钧（专利工程师）交底书结构、CNIPA 查新方法论 |
+---
+
+## ⚖️ 许可与致谢
+
+- 本团队生成的所有结论与代码均由 AI 自动生成，重要决策请经过专业人员核验确认。
+- 本项目部分能力参考了以下开源项目，详见 [`cross-platform/ATTRIBUTION.md`](cross-platform/ATTRIBUTION.md)：
+  - [skills-minimax (pptx-generator)](https://github.com/MiniMax-AI/skills) (MIT 许可) — 提供了 PptxGenJS 模块化与 Slide 分类设计灵感。
+  - [patent-disclosure-skill](https://github.com/handsomestWei/patent-disclosure-skill) (MIT 许可) — 提供了专利工程师交底书的格式框架。
