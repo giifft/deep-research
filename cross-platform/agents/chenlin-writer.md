@@ -54,18 +54,18 @@ marp: true
 theme: gaia
 _class: lead
 paginate: true
-backgroundColor: #F5F7FA
+backgroundColor: #F6FBFC
 color: #333333
 style: |
   section {
     font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
     padding: 40px;
   }
-  h1 { color: #0D7377; font-size: 2.2em; }
-  h2 { color: #00A896; font-size: 1.6em; border-bottom: 2px solid #E8E8E8; padding-bottom: 8px; }
-  strong { color: #00A896; }
+  h1 { color: #027C76; font-size: 2.2em; }
+  h2 { color: #07978D; font-size: 1.6em; border-bottom: 2px solid #E8E8E8; padding-bottom: 8px; }
+  strong { color: #07978D; }
   .card { background: #fff; border: 1px solid #E8E8E8; border-radius: 8px; padding: 24px; text-align: center; }
-  .card-value { font-size: 36px; font-weight: 700; color: #00A896; margin: 8px 0; }
+  .card-value { font-size: 36px; font-weight: 700; color: #07978D; margin: 8px 0; }
   .card-label { font-size: 14px; color: #666; }
   .card-trend-up { font-size: 12px; color: #52C41A; }
   .card-trend-down { font-size: 12px; color: #FF4D4F; }
@@ -121,12 +121,12 @@ style: |
 ## 🗺️ 重点任务路线图
 
 <div style="display:flex;align-items:center;gap:8px;margin-top:30px;">
-  <div style="background:#0D7377;color:#fff;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-weight:700;">1</div>
+  <div style="background:#027C76;color:#fff;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-weight:700;">1</div>
   <div style="flex:1;text-align:center;font-size:12px;color:#333;">调研摸底</div>
-  <div style="flex:1;height:3px;background:linear-gradient(90deg,#0D7377,#00A896);"></div>
-  <div style="background:#00A896;color:#fff;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-weight:700;">2</div>
+  <div style="flex:1;height:3px;background:linear-gradient(90deg,#027C76,#07978D);"></div>
+  <div style="background:#07978D;color:#fff;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-weight:700;">2</div>
   <div style="flex:1;text-align:center;font-size:12px;color:#333;">方案设计</div>
-  <div style="flex:1;height:3px;background:linear-gradient(90deg,#00A896,#E8E8E8);"></div>
+  <div style="flex:1;height:3px;background:linear-gradient(90deg,#07978D,#E8E8E8);"></div>
   <div style="background:#E8E8E8;color:#666;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-weight:700;">3</div>
   <div style="flex:1;text-align:center;font-size:12px;color:#666;">落地执行</div>
 </div>
@@ -144,9 +144,9 @@ style: |
 ```vba
 Sub GenerateTianjiPPT()
     ' ====== UI_DESIGN_SPEC 颜色常量 ======
-    Const COLOR_BG As Long = 16053237       ' RGB(245,247,250) = #F5F7FA
-    Const COLOR_PRIMARY As Long = 9873408   ' RGB(0,168,150) = #00A896
-    Const COLOR_DARK As Long = 7828237      ' RGB(13,115,119) = #0D7377
+    Const COLOR_BG As Long = 16580598       ' RGB(246,251,252) = #F6FBFC
+    Const COLOR_PRIMARY As Long = 9279239   ' RGB(7,151,141) = #07978D
+    Const COLOR_DARK As Long = 7765000      ' RGB(2,124,118) = #027C76
     Const COLOR_TEXT As Long = 2039583      ' RGB(31,31,31) = #1F1F1F
     Const COLOR_BODY As Long = 3355443      ' RGB(51,51,51) = #333333
     Const COLOR_MUTED As Long = 6710886     ' RGB(102,102,102) = #666666
@@ -154,7 +154,7 @@ Sub GenerateTianjiPPT()
     Const COLOR_WHITE As Long = 16777215    ' RGB(255,255,255) = #FFFFFF
     Const COLOR_SUCCESS As Long = 5423130   ' RGB(82,196,26) = #52C41A
     Const COLOR_DANGER As Long = 16731471   ' RGB(255,77,79) = #FF4D4F
-    Const COLOR_ACCENT As Long = 990086     ' RGB(15,184,134) = #0FB886
+    Const COLOR_ACCENT As Long = 8828943    ' RGB(15,184,134) = #0FB886
     
     Dim pptPres As Presentation
     Set pptPres = Application.Presentations.Add
@@ -443,5 +443,5 @@ module.exports = { createSlide, slideConfig };
 - [ ] PptxGenJS 代码中所有 Hex 色值是否**绝对没有带 `#`** 前缀？
 - [ ] PptxGenJS 中是否实现了阴影、边框、圆角的工厂函数（**拒绝复用 Option 污染**）？
 - [ ] 除了封面页，是否每一页右下角都添加了专属的页码徽章？
-- [ ] 当用户提示“国网绿”时，是否自动应用了 `027C76`、`07978D`、`0FB886` 等主题色值？
+- [ ] 当用户提示“品牌绿”时，是否自动应用了 `027C76`、`07978D`、`0FB886` 等主题色值？
 

@@ -1,6 +1,6 @@
 ---
 name: pptx-generator
-description: "基于 PptxGenJS 底层引擎和天机妙策局设计规范的幻灯片生成器。支持从零开始模块化构建 PPTX 文档（包括封面、目录、过渡页、内容页、封底），并集成了以“国网绿”为核心的多套配色模板与视觉风格。触发词：PPT, PPTX, PowerPoint, 演示文稿, 幻灯片, 国网绿, 国家电网。"
+description: "基于 PptxGenJS 底层引擎和天机妙策局设计规范的幻灯片生成器。支持从零开始模块化构建 PPTX 文档（包括封面、目录、过渡页、内容页、封底），并集成了以“品牌绿”为核心的多套配色模板与视觉风格。触发词：PPT, PPTX, PowerPoint, 演示文稿, 幻灯片, 品牌绿, 品牌绿相关。"
 license: MIT
 metadata:
   version: "1.1"
@@ -34,7 +34,7 @@ metadata:
 
 ## 参考规章 (References)
 
-- [设计系统规范 (design-system.md)](references/design-system.md) — 包含国网绿配色色值、字体使用规矩与4类排版风格（Sharp/Soft/Rounded/Pill）的具体间距和圆角设定。
+- [设计系统规范 (design-system.md)](references/design-system.md) — 包含品牌绿配色色值、字体使用规矩与4类排版风格（Sharp/Soft/Rounded/Pill）的具体间距和圆角设定。
 - [页面类型规范 (slide-types.md)](references/slide-types.md) — 定义了封面页、目录页、过渡页、内容页（6种子类型）与封底页的视觉布局框架。
 - [PptxGenJS API 开发指南 (pptxgenjs-api.md)](references/pptxgenjs-api.md) — 介绍文本、图形、表格和内置图表的核心 API 使用样例。
 - [避坑与 QA 指南 (pitfalls.md)](references/pitfalls.md) — 描述防损坏编译技巧以及通过 markitdown 进行占位符提取的 QA 闭环校验步骤。
@@ -54,7 +54,7 @@ const theme = {
   bg: "F6FBFC"          // 页面底色，用于整页幻灯片的背景底色
 };
 ```
-当检测到用户要求使用“**国网绿**”或相关主题时，必须传入上述色值。
+当检测到用户要求使用“**品牌绿**”或相关主题时，必须传入上述色值。
 
 ---
 

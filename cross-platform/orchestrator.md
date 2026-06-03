@@ -22,7 +22,7 @@
 
 ## 📝 经典材料与 PPT 可视化规约 (Writing & UI Protocols)
 
-团队在起草任何材料或演示文稿（PPT）时，必须严格遵守以下"材料与 UI 可视化规范"（对齐 `UI_DESIGN_SPEC.md` 规范）：
+团队在起草任何材料或演示文稿（PPT）时，必须严格遵守以下"材料与 UI 可视化规范"（对齐 [ui-design-spec.md](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/references/ui-design-spec.md) 规范）：
 
 ### 1. 结构与公文脉络
 - **整体逻辑"起-承-转-合"**：
@@ -38,21 +38,24 @@
 ### 2. PPT 可视化与色彩规范
 
 当输出文体为 **PPT 演示文稿/幻灯片** 时，必须严格遵循以下 UI 视觉常量：
-- **配色盘**：
-  - **国网绿 (触发词：国网绿 / 国家电网)**：
-    - 主色/深绿（`theme.primary`）：`027C76`
-    - 主品牌绿（`theme.secondary`）：`07978D`
-    - 高亮/翠绿（`theme.accent`）：`0FB886`
-    - 卡片浅色背景（`theme.light`）：`ebf7fa`
-    - 页面底色背景（`theme.bg`）：`F6FBFC`
-  - **默认天机绿**：
-    - 品牌绿（主色/强调）：`#00A896`
-    - 深绿（封面/深色背景）：`#0D7377`
-    - 页面背景：`#F5F7FA`
-    - 文本主体：`#1F1F1F` (标题) / `#333333` (正文) / `#666666` (辅助说明)
-    - 正向指标（成功）：`#52C41A` | 负向指标（下降）：`#FF4D4F`
+- **配色盘 (默认首推品牌绿，保留其它优秀配色以满足多样化需求)**：
+  - **品牌绿 (默认/触发词：品牌绿 / 绿色主题)**：
+    - 主色/深绿（`theme.primary`）：`027C76` —— 对应 UI 规范中的深主色绿，用于标题、深色背景、渐变。
+    - 主品牌绿（`theme.secondary`）：`07978D` —— 对应 UI 规范中的主品牌绿，用于正文、强调。
+    - 高亮/翠绿（`theme.accent`）：`0FB886` —— 对应 UI 规范中的翠绿高亮，用于步骤、正向指标、点缀。
+    - 卡片浅色背景（`theme.light`）：`ebf7fa` —— 对应 UI 规范中的高亮底色。
+    - 页面底色背景（`theme.bg`）：`F6FBFC` —— 对应 UI 规范中的页面大底色。
+    - 成功状态：`52C41A` | 错误状态：`FF4D4F`
+  - **商务权威 (触发词：商务 / 经典 / 财务 / 深蓝)**：
+    - `primary`: `2B2D42` | `secondary`: `8D99AE` | `accent`: `EF233C` | `light`: `EDF2F4` | `bg`: `EDF2F4`
+  - **科技之夜 (触发词：科技 / 暗黑 / 极客 / 数字化)**：
+    - `primary`: `000814` | `secondary`: `001D3D` | `accent`: `FFC300` | `light`: `003566` | `bg`: `000814` (深色底模式)
+  - **生态自然 (触发词：生态 / 环保 / 乡村振兴)**：
+    - `primary`: `283618` | `secondary`: `606C38` | `accent`: `DDA15E` | `light`: `FEFAE0` | `bg`: `FEFAE0`
+  - **白金奢华 (触发词：高端 / 咨询 / 金融)**：
+    - `primary`: `0A0A0A` | `secondary`: `0070F3` | `accent`: `D4AF37` | `light`: `F5F5F5` | `bg`: `FFFFFF`
 - **设计规范文件引用**：
-  - 详细的颜色规约、字体使用和圆角尺寸必须参考 [设计系统规范 (design-system.md)](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/references/design-system.md)。
+  - 详细的颜色规约、字体使用、圆角与核心组件规范必须参考 [设计系统规范 (design-system.md)](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/references/design-system.md) 及 [核心 UI 设计规范 (ui-design-spec.md)](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/references/ui-design-spec.md)。
   - 页面排版框架及子类型设计参考 [页面类型规范 (slide-types.md)](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/references/slide-types.md)。
 - **数据与金额格式规约**：
   - **千分位**：所有数值和金额必须包含千分位（如 `1,234,567.00`）。
@@ -220,7 +223,7 @@ circle.TextFrame.TextRange.Font.Bold = True
 | **研究报告** | 深度研究/行业分析 | 标准 6 Phase 模式（起承转合） |
 | **定期工作汇报** | 月报/季报/年报/总结 | 大纲配置：`主要成效亮点` -> `关键指标达成` -> `面临瓶颈问题` -> `下步重点任务` |
 | **工作专项汇报** | 专项汇报/专题报告 | 大纲配置：`专项大局背景` -> `推进举措实效` -> `难点堵点诊断` -> `后续保障建议` |
-| **演示文稿 (PPT)** | PPT/幻灯片/演示/国网绿 | 规划 10-15 页 Slide 分页大纲，预设每页排版类型。陈琳发布阶段输出 **Marp 复合排版 + PowerPoint VBA Shape 绘制代码 + PptxGenJS 模块代码** 三模格式（支持国网绿触发）。 |
+| **演示文稿 (PPT)** | PPT/幻灯片/演示/品牌绿 | 规划 10-15 页 Slide 分页大纲，预设每页排版类型。陈琳发布阶段输出 **Marp 复合排版 + PowerPoint VBA Shape 绘制代码 + PptxGenJS 模块代码** 三模格式（支持品牌绿触发）。 |
 | **项目实施方案** | 实施方案/落地计划 | 增加实施规划（里程碑、资源匹配、保障措施） |
 | **专利交底书** | 专利交底/交底书 | 3 阶段查新，生成符合 CNIPA 规范 of 6 章技术交底书 |
 | **学术论文** | 学术论文/学术综述 | 强调文献综述与理论深度，APA 格式参考文献 |
