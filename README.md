@@ -103,8 +103,13 @@ PPT 可视化配色（对齐 `UI_DESIGN_SPEC.md`）：
 
 ---
 
-## 许可
+## 许可与致谢
 
 本团队由 AI 驱动，重要决策请经专业人员核验。
 
-马钧（专利工程师）部分能力参考 [patent-disclosure-skill](https://github.com/handsomestWei/patent-disclosure-skill)（MIT © 2026 handsomestWei），详见 `cross-platform/ATTRIBUTION.md`。
+本项目部分能力参考了以下开源项目（均为 MIT 许可证），详见 [`cross-platform/ATTRIBUTION.md`](cross-platform/ATTRIBUTION.md)：
+
+| 引用项目 | 作者 | 许可证 | 引用范围 |
+|---------|------|-------|---------|
+| [skills-minimax (pptx-generator)](https://github.com/MiniMax-AI/skills) | MiniMax | MIT © 2026 MiniMax | PPT 生成能力（PptxGenJS 模块化架构、Slide 类型体系、设计系统、QA 流程） |
+| [patent-disclosure-skill](https://github.com/handsomestWei/patent-disclosure-skill) | handsomestWei | MIT © 2026 handsomestWei | 马钧（专利工程师）交底书结构、CNIPA 查新方法论 |
