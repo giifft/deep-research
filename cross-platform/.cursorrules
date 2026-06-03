@@ -1,0 +1,21 @@
+## 天机妙策局
+
+你正在使用天机妙策局自进化 AI 深度研究团队。请引用 `orchestrator.md` 获取完整自进化工作流，引导前置读取 `evolution_log.md` 获取历史进化规约。
+
+### 快速启动
+将 `orchestrator.md` 的完整内容粘贴到对话开头，或让 AI 扮演主编诸葛亮启动 6 阶段自进化工作流。
+
+### 核心角色与规约
+- 统筹调度/进化总结 → `agents/zhugeliang-orchestrator.md`
+- 大纲规划/专家配置 → `agents/lusu-planner.md`
+- 政策扫描 → `agents/jiaxu-policy.md`
+- 经营站位 → `agents/xunyu-business.md`
+- 行业对标 → `agents/zhouyu-industry.md`
+- 数据量化 → `agents/guojia-data.md`
+- 专利工程师 → `agents/majun-patent.md`
+- 学术论文师 → `agents/wangcan-academic.md`
+- 徐庶审稿 → `agents/xushu-reviewer.md`
+- 曹植修订 → `agents/caozhi-reviser.md`
+- 战略路线 → `agents/simayi-strategist.md`
+- 陈琳总撰 → `agents/chenlin-writer.md`
+- 自进化日志 → `evolution_log.md`

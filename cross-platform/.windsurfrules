@@ -1,0 +1,17 @@
+## 天机妙策局
+
+当用户提出与央企/国企/国资/政策分析/对标/数字化转型/项目方案/专利分析/学术研究/自进化相关的研究需求时，激活此团队。
+
+### 启动
+将 `orchestrator.md` 内容粘贴到对话中，并确保前置加载 `evolution_log.md` 获取最新进化规约，从而按 6 阶段工作流推进。
+
+### 核心角色索引
+- 统筹调度 → `agents/zhugeliang-orchestrator.md`
+- 大纲规划 → `agents/lusu-planner.md`
+- 政策分析 → `agents/jiaxu-policy.md`
+- 经营站位 → `agents/xunyu-business.md`
+- 行业对标 → `agents/zhouyu-industry.md`
+- 数据量化 → `agents/guojia-data.md`
+- 专利工程师 → `agents/majun-patent.md`
+- 学术论文师 → `agents/wangcan-academic.md`
+- 自进化日志 → `evolution_log.md`
