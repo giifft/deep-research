@@ -38,9 +38,9 @@
 --- 目录 --- 引言 --- 正文各章 --- 战略对策/工作部署 --- 结论 --- 参考文献/附表 ---
 ```
 
-### 📂 选项 B：演示文稿 (PPT / 幻灯片) — 双模输出
+### 📂 选项 B：演示文稿 (PPT / 幻灯片) — 三模输出
 
-你必须同时输出以下 **双模 PPT 格式**：
+你必须同时输出以下 **三模 PPT 格式**。如果为具备 Node.js/npm 执行环境的 AI IDE 场景，优先通过 PptxGenJS（模式3）编写单页代码并由 compile.js 整合为 PPTX，其他对话环境输出模式 1 和 2：
 
 ---
 
@@ -305,20 +305,129 @@ End Sub
 
 ---
 
+#### 模式 3：PptxGenJS 模块化代码输出 (PptxGenJS Modular Output)
+
+在本地 AI IDE 执行环境中，你需要输出结构化、符合 CommonJS 模块规范的 PptxGenJS 文件。
+- **全局参考规则**：你必须严格遵循 [PptxGenJS API 开发指南 (pptxgenjs-api.md)](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/references/pptxgenjs-api.md)、[设计系统规范 (design-system.md)](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/references/design-system.md) 中的颜色（**绝对不能带 `#`**）与风格设定。
+- **页面徽章规则**：除了封面页，其他页面必须包含右下角页码徽章（x: 9.3, y: 5.1），确保符合 [避坑与 QA 指南 (pitfalls.md)](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/references/pitfalls.md) 的**不要复用 Option 对象**规范。
+
+##### 代码模板示例 (以数据指标页 slide-03.js 为例)：
+
+```javascript
+// slides/slide-03.js
+const pptxgen = require("pptxgenjs");
+
+const slideConfig = {
+  type: 'content',
+  subtype: 'data',
+  index: 3,
+  title: '核心经营指标数据总览'
+};
+
+// 必须为同步函数 (createSlide)
+function createSlide(pres, theme) {
+  const slide = pres.addSlide();
+  slide.background = { color: theme.bg };
+
+  // 1. 页面标题
+  slide.addText(slideConfig.title, {
+    x: 0.5, y: 0.3, w: 9.0, h: 0.5,
+    fontSize: 28, fontFace: "Microsoft YaHei",
+    color: theme.primary, bold: true, margin: 0
+  });
+
+  // 定义创建阴影的工厂函数，防止对象复用污染
+  const getShadow = () => ({ type: "outer", color: "000000", blur: 6, offset: 2, angle: 135, opacity: 0.1 });
+
+  // 2. 绘制 3 个数据指标卡
+  const cardW = 2.8;
+  const cardH = 2.2;
+  const cardY = 1.4;
+  const gap = 0.3;
+
+  for (let i = 0; i < 3; i++) {
+    const cardX = 0.5 + i * (cardW + gap);
+
+    // 卡片背景 (圆角矩形，Soft 风格 rectRadius: 0.1)
+    slide.addShape(pres.shapes.ROUNDED_RECTANGLE, {
+      x: cardX, y: cardY, w: cardW, h: cardH,
+      fill: { color: "FFFFFF" },
+      line: { color: "E8E8E8", width: 1 },
+      rectRadius: 0.1,
+      shadow: getShadow()
+    });
+
+    // 指标标签
+    slide.addText(`指标标签-${i + 1}`, {
+      x: cardX + 0.2, y: cardY + 0.3, w: cardW - 0.4, h: 0.3,
+      fontSize: 14, fontFace: "Microsoft YaHei",
+      color: "666666", align: "center", margin: 0
+    });
+
+    // 指标数值 (加粗大字，主题强调色)
+    slide.addText("1,234.56", {
+      x: cardX + 0.2, y: cardY + 0.8, w: cardW - 0.4, h: 0.6,
+      fontSize: 36, fontFace: "Microsoft YaHei",
+      color: theme.secondary, bold: true, align: "center", margin: 0
+    });
+
+    // 趋势指标
+    slide.addText("📈 同比 +12.5%", {
+      x: cardX + 0.2, y: cardY + 1.6, w: cardW - 0.4, h: 0.3,
+      fontSize: 12, fontFace: "Microsoft YaHei",
+      color: "52C41A", align: "center", margin: 0
+    });
+  }
+
+  // 3. 页码徽章 (必带，不可省略)
+  slide.addShape(pres.shapes.OVAL, {
+    x: 9.3, y: 5.1, w: 0.4, h: 0.4,
+    fill: { color: theme.accent }
+  });
+  slide.addText(String(slideConfig.index), {
+    x: 9.3, y: 5.1, w: 0.4, h: 0.4,
+    fontSize: 11, fontFace: "Arial",
+    color: "FFFFFF", bold: true,
+    align: "center", valign: "middle", margin: 0
+  });
+
+  return slide;
+}
+
+// 供本地开发预览使用
+if (require.main === module) {
+  const pres = new pptxgen();
+  pres.layout = 'LAYOUT_16x9';
+  const testTheme = {
+    primary: "027C76",
+    secondary: "07978D",
+    accent: "0FB886",
+    light: "ebf7fa",
+    bg: "F6FBFC"
+  };
+  createSlide(pres, testTheme);
+  pres.writeFile({ fileName: `slide-${String(slideConfig.index).padStart(2, '0')}-preview.pptx` });
+}
+
+module.exports = { createSlide, slideConfig };
+```
+
+---
+
 ## 陈琳排版算法决策树
 
 在 Phase 5 输出 PPT 时，对每一页 Slide 根据内容类型自动选择排版范式：
 
-| Slide 内容类型 | Marp 排版方案 | VBA 渲染方案 |
-|---------------|-------------|-------------|
-| 封面页 | `_class: lead` 居中 | `ppLayoutBlank` + 深绿背景 + 白色大字 |
-| 目录页 | Flex 双栏 | 双列文本框 |
-| 成效/亮点页 | 双栏：左文字右数据 | 左侧文本框 + 右侧圆角卡片 |
-| 数据指标页 | 指标卡 HTML 组件（3-4列） | `msoShapeRoundedRectangle` 卡片矩阵 |
-| 对比/对标页 | Flex 双栏对比卡 | 左右两个圆角卡片分区 |
-| 问题/瓶颈页 | 左栏问题 + 右栏原因分析 | 左右分栏文本 + 红色圆点标记 |
-| 路线图/部署页 | 流程步骤条 HTML 组件 | `msoShapeOval` + `AddLine` 时间轴 |
-| 封底页 | `_class: lead` 居中结语 | `ppLayoutBlank` + 深绿背景 + 谢幕文字 |
+| Slide 内容类型 | Marp 排版方案 | VBA 渲染方案 | PptxGenJS 页面渲染配置 |
+|---|---|---|---|
+| 封面页 | `_class: lead` 居中 | `ppLayoutBlank` + 深绿背景 + 白色大字 | `theme.bg` 或 `theme.primary` 为背景，偏置大字主标题 |
+| 目录页 | Flex 双栏 | 双列文本框 | `theme.bg`背景，3-4列横向卡片或纵向排列 |
+| 成效/亮点页 | 双栏：左文字右数据 | 左侧文本框 + 右侧圆角卡片 | 左右分栏坐标定位（如 x:0.5 和 x:5.2） |
+| 数据指标页 | 指标卡 HTML 组件（3-4列） | `msoShapeRoundedRectangle` 卡片矩阵 | `ROUNDED_RECTANGLE` 大小卡片定位，配工厂阴影 |
+| 对比/对标页 | Flex 双栏对比卡 | 左右两个圆角卡片分区 | 并排两个大 `ROUNDED_RECTANGLE` (w: 4.2) 左右陈列 |
+| 问题/瓶颈页 | 左栏问题 + 右栏原因分析 | 左右分栏文本 + 红色圆点标记 | 左右分栏定位，辅以警告色修饰条或图标 |
+| 路线图/部署页 | 流程步骤条 HTML 组件 | `msoShapeOval` + `AddLine` 时间轴 | 横向直线 `pres.shapes.LINE` 串联数个 `OVAL` 圆圈步骤 |
+| 封底页 | `_class: lead` 居中结语 | `ppLayoutBlank` + 深绿背景 + 谢幕文字 | `theme.primary` 铺底，中间留白感谢致谢大字 |
 
 ---
 
@@ -331,3 +440,8 @@ End Sub
 - [ ] Marp 输出中是否使用了 Flex 布局或 HTML 卡片，而非纯 bullet list？
 - [ ] VBA 代码中是否使用了 `msoShapeRoundedRectangle` 绘制卡片？
 - [ ] VBA 颜色常量是否对齐 `UI_DESIGN_SPEC.md` 色值？
+- [ ] PptxGenJS 代码中所有 Hex 色值是否**绝对没有带 `#`** 前缀？
+- [ ] PptxGenJS 中是否实现了阴影、边框、圆角的工厂函数（**拒绝复用 Option 污染**）？
+- [ ] 除了封面页，是否每一页右下角都添加了专属的页码徽章？
+- [ ] 当用户提示“国网绿”时，是否自动应用了 `027C76`、`07978D`、`0FB886` 等主题色值？
+

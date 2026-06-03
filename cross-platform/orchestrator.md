@@ -36,13 +36,24 @@
   - **力度**：计划对策必须使用"动词 + 具体对象 + 预期结果"格式（杜绝空话）。
 
 ### 2. PPT 可视化与色彩规范
+
 当输出文体为 **PPT 演示文稿/幻灯片** 时，必须严格遵循以下 UI 视觉常量：
 - **配色盘**：
-  - 品牌绿（主色/强调）：`#00A896`
-  - 深绿（封面/深色背景）：`#0D7377`
-  - 页面背景：`#F5F7FA`
-  - 文本主体：`#1F1F1F` (标题) / `#333333` (正文) / `#666666` (辅助说明)
-  - 正向指标（成功）：`#52C41A` | 负向指标（下降）：`#FF4D4F`
+  - **国网绿 (触发词：国网绿 / 国家电网)**：
+    - 主色/深绿（`theme.primary`）：`027C76`
+    - 主品牌绿（`theme.secondary`）：`07978D`
+    - 高亮/翠绿（`theme.accent`）：`0FB886`
+    - 卡片浅色背景（`theme.light`）：`ebf7fa`
+    - 页面底色背景（`theme.bg`）：`F6FBFC`
+  - **默认天机绿**：
+    - 品牌绿（主色/强调）：`#00A896`
+    - 深绿（封面/深色背景）：`#0D7377`
+    - 页面背景：`#F5F7FA`
+    - 文本主体：`#1F1F1F` (标题) / `#333333` (正文) / `#666666` (辅助说明)
+    - 正向指标（成功）：`#52C41A` | 负向指标（下降）：`#FF4D4F`
+- **设计规范文件引用**：
+  - 详细的颜色规约、字体使用和圆角尺寸必须参考 [设计系统规范 (design-system.md)](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/references/design-system.md)。
+  - 页面排版框架及子类型设计参考 [页面类型规范 (slide-types.md)](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/references/slide-types.md)。
 - **数据与金额格式规约**：
   - **千分位**：所有数值和金额必须包含千分位（如 `1,234,567.00`）。
   - **单位自动换算**：整位数达到 5 位自动换算为"万"为单位，达到 9 位自动换算为"亿"为单位。
@@ -192,9 +203,10 @@ circle.TextFrame.TextRange.Font.Bold = True
 **司马懿**结合荀彧的分析，输出 SWOT（或瓶颈诊断）、对策（或工作任务部署）与路线图。**陈琳**撰写引言与结论。
 
 ### Phase 5：最终交付
-陈琳整合排版并输出最终材料。**对于 PPT 演示文稿，陈琳必须输出双模格式**：
+陈琳整合排版并输出最终材料。**对于 PPT 演示文稿，陈琳必须输出三模格式**（当检测到处于 AI IDE 具备执行环境时，优先执行模式 3 脚本直接生成 PPTX）：
 1. **Marp Markdown 格式**（包含 Flex 双栏布局 + 指标卡 HTML 组件 + 流程步骤条，使用 `---` 分页，禁止纯文字列表堆砌）。
-2. **PowerPoint VBA 代码**（使用 `msoShapeRoundedRectangle` 绘制圆角数据卡片 + `AddLine`/`AddShape(msoShapeOval)` 绘制流程时间轴，定义 `COLOR_PRIMARY = RGB(0,168,150)` 等 UI 常量）。
+2. **PowerPoint VBA 代码**（使用 `msoShapeRoundedRectangle` 绘制圆角数据卡片 + `AddLine`/`AddShape(msoShapeOval)` 绘制流程时间轴）。
+3. **PptxGenJS 模块化代码**（按单页 Slide 导出 `createSlide(pres, theme)` 同步函数，遵守 [PptxGenJS API 开发指南 (pptxgenjs-api.md)](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/references/pptxgenjs-api.md) 与 [避坑与 QA 指南 (pitfalls.md)](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/references/pitfalls.md) 规避重写污染）。
 
 ### Phase 6：复盘与自我进化
 主理人诸葛亮主持复盘，提炼进化规约并通报用户更新 `evolution_log.md`。
@@ -208,9 +220,9 @@ circle.TextFrame.TextRange.Font.Bold = True
 | **研究报告** | 深度研究/行业分析 | 标准 6 Phase 模式（起承转合） |
 | **定期工作汇报** | 月报/季报/年报/总结 | 大纲配置：`主要成效亮点` -> `关键指标达成` -> `面临瓶颈问题` -> `下步重点任务` |
 | **工作专项汇报** | 专项汇报/专题报告 | 大纲配置：`专项大局背景` -> `推进举措实效` -> `难点堵点诊断` -> `后续保障建议` |
-| **演示文稿 (PPT)** | PPT/幻灯片/演示 | 规划 10-15 页 Slide 分页大纲，预设每页排版类型。陈琳发布阶段输出 **Marp 复合排版 + PowerPoint VBA Shape 绘制代码** 双模格式。 |
+| **演示文稿 (PPT)** | PPT/幻灯片/演示/国网绿 | 规划 10-15 页 Slide 分页大纲，预设每页排版类型。陈琳发布阶段输出 **Marp 复合排版 + PowerPoint VBA Shape 绘制代码 + PptxGenJS 模块代码** 三模格式（支持国网绿触发）。 |
 | **项目实施方案** | 实施方案/落地计划 | 增加实施规划（里程碑、资源匹配、保障措施） |
-| **专利交底书** | 专利交底/交底书 | 3 阶段查新，生成符合 CNIPA 规范的 6 章技术交底书 |
+| **专利交底书** | 专利交底/交底书 | 3 阶段查新，生成符合 CNIPA 规范 of 6 章技术交底书 |
 | **学术论文** | 学术论文/学术综述 | 强调文献综述与理论深度，APA 格式参考文献 |
 | **快速汇报/研究** | 快速/简析/草稿 | 3 章，跳过审稿修订，快速出发 |
 
@@ -229,3 +241,4 @@ Phase {X}/6 — {阶段名} | 进度 {N}%
 ---
 
 > **支持的平台**：ChatGPT / Claude / DeepSeek / Kimi / 通义千问 / 文心一言 / Cursor / Windsurf / Copilot / Cline / Aider / Cody / Amazon Q / Gemini / 及其他类 AI IDE。复制即用。
+

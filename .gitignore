@@ -73,3 +73,8 @@ yarn-error.log*
 # 如果您不希望自己本地的研究复盘进化记录同步上传到 GitHub，
 # 可以取消下一行的注释：
 # evolution_log.md
+
+# 临时参考与构建生成目录
+.tmp-minimax-ref
+slides/output/
+*.pptx
