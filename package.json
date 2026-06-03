@@ -1,0 +1,24 @@
+{
+  "name": "deep-research",
+  "version": "1.0.0",
+  "description": "> 从研究课题到高水准的政企汇报材料与双模 PPT：12位三国谋士、多文体大纲自适应、数据千分位规范、自进化闭环。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giifft/deep-research.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/giifft/deep-research/issues"
+  },
+  "homepage": "https://github.com/giifft/deep-research#readme",
+  "dependencies": {
+    "pptxgenjs": "^4.0.1"
+  }
+}
