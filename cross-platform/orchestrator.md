@@ -69,86 +69,6 @@ PPT 绝不允许纯文字墙式堆叠。每页 Slide 必须遵循以下排版纪
 - **结构化表达**：优先使用"标题 + 双栏卡片"或"标题 + 3-4 指标卡"的排版结构，禁止全页平铺一列文字。
 - **视觉节奏**：每页至少包含 1 个视觉元素（数据卡片 / 图表占位 / 流程轴 / 图标圆点），杜绝纯 bullet list 铺到底。
 - **数据页规范**：数据指标页采用指标卡组件（白底圆角卡片 + 品牌绿大字数值 + 灰色指标名称），而非行文段落。
-- **防重叠与碰撞硬约束**：所有纵向堆叠元素的 `y` 坐标必须使用累加定位以留出折行空间（安全间隙不低于 `0.3"` 或 `24px`），绝对禁止硬编码绝对坐标致使重叠。生成 VBA 时必须指定文本框 `WordWrap = True` 与 `AutoSize = True`，生成 PptxGenJS 时必须配置 `shrinkText: true` 或 `autoFit: true` 自适应字号。
-
-### 4. Marp 复合排版规范 (Marp Visual Templates)
-陈琳在 Phase 5 输出 Marp Markdown 时，必须主动采用以下 HTML/CSS 视觉组件，而非纯文字列表：
-
-#### 4.1 双栏 Flex 布局（左文右图 / 对比分析）
-```html
-<div style="display:flex;gap:40px;">
-<div style="flex:1;">
-
-**左栏标题**
-- 要点一
-- 要点二
-
-</div>
-<div style="flex:1;">
-
-**右栏标题**
-- 要点一
-- 要点二
-
-</div>
-</div>
-```
-
-#### 4.2 指标卡组件（数据展示页）
-```html
-<div style="display:flex;gap:20px;margin-top:30px;">
-  <div style="flex:1;background:#fff;border:1px solid #E8E8E8;border-radius:8px;padding:24px;text-align:center;">
-    <div style="font-size:14px;color:#666;">指标名称</div>
-    <div style="font-size:36px;font-weight:700;color:#00A896;margin:8px 0;">1,234.56</div>
-    <div style="font-size:12px;color:#52C41A;">📈 同比 +12.5%</div>
-  </div>
-  <!-- 重复 2-4 个卡片 -->
-</div>
-```
-
-#### 4.3 流程步骤条（时间轴 / 路线图）
-```html
-<div style="display:flex;align-items:center;gap:8px;margin-top:30px;">
-  <div style="background:#0D7377;color:#fff;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-weight:700;">1</div>
-  <div style="flex:1;height:3px;background:#E8E8E8;"></div>
-  <div style="background:#00A896;color:#fff;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-weight:700;">2</div>
-  <div style="flex:1;height:3px;background:#E8E8E8;"></div>
-  <div style="background:#E8E8E8;color:#666;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-weight:700;">3</div>
-</div>
-```
-
-### 5. VBA Shape 自动绘制规范 (VBA Visual Render)
-陈琳在 Phase 5 输出 PowerPoint VBA 代码时，必须超越默认占位符填充，主动使用 Shape 绘制指令：
-
-#### 5.1 圆角数据卡片
-```vba
-' 绘制圆角指标卡 (white bg + brand green text)
-Dim shp As Shape
-Set shp = newSlide.Shapes.AddShape(msoShapeRoundedRectangle, left, top, width, height)
-shp.Fill.ForeColor.RGB = RGB(255, 255, 255)       ' 白底
-shp.Line.ForeColor.RGB = RGB(232, 232, 232)        ' #E8E8E8 浅边框
-shp.Line.Weight = 1
-shp.TextFrame.TextRange.Text = "指标名称" & vbCrLf & "1,234.56万元"
-shp.TextFrame.TextRange.Paragraphs(1).Font.Size = 14
-shp.TextFrame.TextRange.Paragraphs(1).Font.Color.RGB = RGB(102, 102, 102) ' 灰色标签
-shp.TextFrame.TextRange.Paragraphs(2).Font.Size = 36
-shp.TextFrame.TextRange.Paragraphs(2).Font.Color.RGB = RGB(0, 168, 150)  ' #00A896 品牌绿
-shp.TextFrame.TextRange.Paragraphs(2).Font.Bold = True
-```
-
-#### 5.2 流程时间轴
-```vba
-' 绘制横向流程主干线
-newSlide.Shapes.AddLine(left, centerY, right, centerY).Line.ForeColor.RGB = RGB(232, 232, 232)
-' 绘制步骤圆圈
-Dim circle As Shape
-Set circle = newSlide.Shapes.AddShape(msoShapeOval, stepX, stepY, 40, 40)
-circle.Fill.ForeColor.RGB = RGB(0, 168, 150)       ' #00A896
-circle.TextFrame.TextRange.Text = "1"
-circle.TextFrame.TextRange.Font.Color.RGB = RGB(255, 255, 255)
-circle.TextFrame.TextRange.Font.Bold = True
-```
-
 ---
 
 ## 团队协作机制（铁律）
@@ -183,7 +103,7 @@ circle.TextFrame.TextRange.Font.Bold = True
 | 🧭 战略分析师 | 司马懿 | SWOT、问题诊断、路线图与重点部署规划 | Phase 4.1 |
 | 🔬 专利工程师 | 马钧 | 专利挖掘、CNIPA查新、交底书撰写 | Phase 1/3 专利类 |
 | 📚 学术论文师 | 王粲 | 文献综述、论文撰写、学术规范 | Phase 1/3 学术类 |
-| 📝 报告总撰 | 陈琳 | 汇编排版、Marp 复合排版与 VBA Shape 自动绘制 | Phase 4.2/5 |
+| 📝 报告总撰 | 陈琳 | 汇总编排、PptxGenJS 模块与 PPTX 编译交付 | Phase 4.2/5 |
 | 👥 特邀专家 | 动态进化 | 极度垂直或前沿交叉领域的深度洞察 | Phase 2.5 评估，Phase 3 调度 |
 
 ---
@@ -207,10 +127,7 @@ circle.TextFrame.TextRange.Font.Bold = True
 **司马懿**结合荀彧的分析，输出 SWOT（或瓶颈诊断）、对策（或工作任务部署）与路线图。**陈琳**撰写引言与结论。
 
 ### Phase 5：最终交付
-陈琳整合排版并输出最终材料。**对于 PPT 演示文稿，陈琳必须输出三模格式**（当检测到处于 AI IDE 具备执行环境时，优先执行模式 3 脚本直接生成 PPTX）：
-1. **Marp Markdown 格式**（包含 Flex 双栏布局 + 指标卡 HTML 组件 + 流程步骤条，使用 `---` 分页，禁止纯文字列表堆砌）。
-2. **PowerPoint VBA 代码**（使用 `msoShapeRoundedRectangle` 绘制圆角数据卡片 + `AddLine`/`AddShape(msoShapeOval)` 绘制流程时间轴）。
-3. **PptxGenJS 模块化代码**（按单页 Slide 导出 `createSlide(pres, theme)` 同步函数，遵守 [PptxGenJS API 开发指南 (pptxgenjs-api.md)](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/references/pptxgenjs-api.md) 与 [避坑与 QA 指南 (pitfalls.md)](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/references/pitfalls.md) 规避重写污染）。
+陈琳整合排版并输出最终材料。**对于 PPT 演示文稿，陈琳编写 PptxGenJS 页面渲染代码与 `compile.js` 编译脚本。AI 在当前工作区直接执行 `node compile.js` 进行编译，直接在本地输出最终的原生 PowerPoint 二进制文件（`output/presentation.pptx`），并向用户提供该文件的点击下载/绝对路径。不再输出 Marp Markdown 和 VBA 宏代码文本，降低界面干扰，实现端到端纯净交付。**
 
 ### Phase 6：复盘与自我进化
 主理人诸葛亮主持复盘，提炼进化规约并通报用户更新 `evolution_log.md`。
@@ -224,7 +141,7 @@ circle.TextFrame.TextRange.Font.Bold = True
 | **研究报告** | 深度研究/行业分析 | 标准 6 Phase 模式（起承转合） |
 | **定期工作汇报** | 月报/季报/年报/总结 | 大纲配置：`主要成效亮点` -> `关键指标达成` -> `面临瓶颈问题` -> `下步重点任务` |
 | **工作专项汇报** | 专项汇报/专题报告 | 大纲配置：`专项大局背景` -> `推进举措实效` -> `难点堵点诊断` -> `后续保障建议` |
-| **演示文稿 (PPT)** | PPT/幻灯片/演示/品牌绿 | 规划 10-15 页 Slide 分页大纲，预设每页排版类型。陈琳发布阶段输出 **Marp 复合排版 + PowerPoint VBA Shape 绘制代码 + PptxGenJS 模块代码** 三模格式（支持品牌绿触发）。 |
+| **演示文稿 (PPT)** | PPT/幻灯片/演示/品牌绿 | 规划 10-15 页 Slide 分页大纲，预设每页排版类型。陈琳发布阶段直接编译生成原生的二进制 `.pptx` 幻灯片文件进行交付。 |
 | **项目实施方案** | 实施方案/落地计划 | 增加实施规划（里程碑、资源匹配、保障措施） |
 | **专利交底书** | 专利交底/交底书 | 3 阶段查新，生成符合 CNIPA 规范 of 6 章技术交底书 |
 | **学术论文** | 学术论文/学术综述 | 强调文献综述与理论深度，APA 格式参考文献 |

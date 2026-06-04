@@ -1,11 +1,11 @@
 # 天机妙策局 (deep-research)
 
-> **自进化 AI 深度研究团队**：从研究课题到高水准政企汇报材料与符合 UI 规范的演示文稿。通过 12 位三国谋士的多角色智能协同、多文体大纲自适应、严密的数据量化换算规约与闭环自进化机制，为政企及科研用户提供一站式深度调研与三模 PPT 生成能力。
+> **自进化 AI 深度研究团队**：从研究课题到高水准政企汇报材料与符合 UI 规范的演示文稿。通过 12 位三国谋士的多角色智能协同、多文体大纲自适应、严密的数据量化换算规约与闭环自进化机制，为政企及科研用户提供一站式深度调研与原生二进制 PPTX 演示文稿生成能力。
 
 <p align="center">
   <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License MIT">
   <img src="https://img.shields.io/badge/Type-Multi--Agent-blue.svg" alt="Type Multi-Agent">
-  <img src="https://img.shields.io/badge/Format-Marp%20%7C%20VBA%20%7C%20PptxGenJS-green.svg" alt="Format Marp/VBA/PptxGenJS">
+  <img src="https://img.shields.io/badge/Format-PowerPoint%20PPTX-green.svg" alt="Format PowerPoint PPTX">
   <img src="https://img.shields.io/badge/AgentSkills-Standard-orange.svg" alt="AgentSkills Standard">
 </p>
 
@@ -16,10 +16,7 @@
 - 👥 **12+1 多角色协同工作流**：内置由主理人**诸葛亮**、研究架构师**鲁肃**领衔的 12 人专业研究团队。同时在 Phase 2.5 可根据极度前沿或垂直课题，动态进化出第 13 位**特邀专家**挂载专属视角。
 - 🎨 **默认品牌绿 UI 规范 PPT**：以 [核心 UI 设计规范 (ui-design-spec.md)](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/references/ui-design-spec.md)（品牌绿主题体系）为最高优先级 UI 规范。在未指定配色时默认以品牌绿（主色 `#027C76`、主品牌绿 `#07978D`、高亮 `#0FB886` 等）作为输出配色。
 - 📐 **可视化与数据换算规约**：郭嘉和徐庶会严格核验所有量化数据，自动执行万/亿级单位换算，所有数字强制保留千分位并保留两位小数（例如 `1,000.00元` / `15.50万元` / `2.06亿元`）。
-- 🖥️ **三模 PPT 演示文稿生成**：报告总撰**陈琳**在 Phase 5 自动整合并发布：
-  1. **Marp Markdown 格式**（包含 Flex 双栏、指标卡 HTML 容器等，可直接导入 AI PPT 工具渲染）。
-  2. **PowerPoint VBA 代码**（可在 PowerPoint 中运行自动排版绘制）。
-  3. **PptxGenJS 模块代码**（支持在本地 Node.js 环境一键编译组装成实体 PPTX 文件）。
+- 🖥️ **原生二进制 PPTX 演示文稿生成**：报告总撰**陈琳**在 Phase 5 汇总编排 PptxGenJS 页面渲染代码，自动在本地环境中执行编译，直接生成原生的二进制 `.pptx` 幻灯片文件交付给用户，无需任何繁琐的代码运行或手动操作。
 - 🔄 **闭环自进化机制 (Self-Evolution)**：特设 `Phase 6：复盘与自我进化` 闭环。系统在复盘中提炼规约自动写入 [evolution_log.md](file:///Users/lan/Rules_沉淀/deep-research/cross-platform/evolution_log.md)，在下一次运行前自动载入合并，实现永久自迭代。
 - 💼 **多文体大纲自适应**：自动规划**深度研究报告**、**定期工作总结 (月/季/年报)**、**工作专项汇报**、**项目实施方案**、**专利交底书**和**学术论文**。
 
@@ -82,7 +79,7 @@ deep-research/
 2. **Phase 2：大纲/PPT 分页规划**：鲁肃基于扫描摘要规划章节或 10-15 页 PPT 分页演示大纲（预设排版结构）。
 3. **Phase 2.5：特邀专家进化**：评估课题深度，动态进化出第 13 位专家。
 4. **Phase 3：单页 Slide 撰写与循环审稿**：对应角色撰写 -> 徐庶进行 8 维质量与 UI 规范审稿 -> 曹植精准修订（最多 3 轮）。
-5. **Phase 4-5：对策部署与最终交付**：司马懿输出路线图 -> 陈琳总撰并发布普通文本或三模 PPT 演示文稿（默认使用品牌绿规范配色）。
+5. **Phase 4-5：对策部署与最终交付**：司马懿输出路线图 -> 陈琳总撰并发布普通文本或原生 PPTX 演示文稿（默认使用品牌绿规范配色）。
 6. **Phase 6：复盘与自我进化**：诸葛亮复盘总结，提炼新规约并自动追加至 `evolution_log.md` 中。
 
 ---
