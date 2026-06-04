@@ -1,65 +1,38 @@
 ---
-name: pptx-generator
-description: "基于 PptxGenJS 底层引擎和天机妙策局设计规范的幻灯片生成器。支持从零开始模块化构建 PPTX 文档（包括封面、目录、过渡页、内容页、封底），并集成了以“品牌绿”为核心的多套配色模板与视觉风格。触发词：PPT, PPTX, PowerPoint, 演示文稿, 幻灯片, 品牌绿, 品牌绿相关。"
+name: tianji-my-skill
+description: "天机妙策局自进化 AI 深度研究与多文体汇报材料生成团队。支持12位三国谋士协同完成政策扫描、成效亮点、行业对标、数据量化、难点诊断、战略路线部署与专利/学术查新；自适应生成深度研究报告、总结汇报、项目实施方案、专利交底书、学术论文以及三模（Marp/VBA/PptxGenJS）PPT演示文稿；强制执行以“品牌绿”为核心的 UI 设计规范与千分位数据换算格式。触发词：天机妙策局, 深度研究, 行业分析, 工作汇报, 总结汇报, 实施方案, 专利交底, 学术论文, PPT, 演示文稿。"
 license: MIT
 metadata:
-  version: "1.1"
+  version: "1.2"
   category: productivity
   sources:
-    - https://gitbrent.github.io/PptxGenJS/
-    - https://github.com/microsoft/markitdown
+    - https://github.com/giifft/deep-research
 ---
 
-# PPTX 生成器 (PPTX Generator)
+# 天机妙策局 (Tianji Deep Research Team)
 
 ## 概述 (Overview)
 
-本技能模块用于执行天机妙策局所有 PowerPoint 幻灯片的生成任务。它包含了从零开始构建演示文稿的标准设计系统、多种页面类型的排版范式以及质量保障（QA）流程。
+本技能模块为“天机妙策局”AI 深度研究团队的核心技能，集成了 12+1 位三国谋士的协同流水线工作机制，能够协助用户快速完成从课题调研到结构化引言、正文撰写、战略建议以及高质量多模态 PPT 交付的完整闭环。
 
 ## 快速参考 (Quick Reference)
 
-| 任务 | 实现方案 |
-|------|----------|
-| 文本提取与大纲分析 | `python -m markitdown presentation.pptx` |
-| 模块化零基础生成 | 使用 PptxGenJS 引擎与 5 种页面类型模板进行编写 |
+| 场景需求 | 核心产出模式 | 核心角色 |
+|------|----------|------|
+| **深度研究报告** | 6 阶段起承转合结构化 Markdown 报告 | 诸葛亮、鲁肃、贾诩、周瑜、荀彧、郭嘉、马钧、王粲、徐庶、曹植、司马懿、陈琳 |
+| **定期工作汇报** | 主要成效亮点 -> 关键指标达成 -> 面临问题瓶颈 -> 下步重点任务 | 荀彧、周瑜、郭嘉、司马懿 |
+| **工作专项汇报** | 专项背景大局 -> 推进举措实效 -> 难点堵点诊断 -> 后续保障建议 | 贾诩、荀彧、司马懿 |
+| **演示文稿 (PPT)** | Marp Markdown + PowerPoint VBA 宏代码 + PptxGenJS 模块代码三模输出 | 陈琳、徐庶 |
+| **专利交底书** | 查新分析 + CNIPA 规范 6 章技术交底书 + Mermaid 图 | 马钧 |
+| **学术论文** | 学术文献综述 + APA 格式规范参考文献 | 王粲 |
 
-| 规范要素 | 约定值 |
-|------|-------|
-| **画布标准尺寸** | 10" x 5.625" (LAYOUT_16x9 宽屏) |
-| **色值要求** | 6位 Hex 字符（绝对禁止带 `#` 前缀） |
-| **中文字体** | 微软雅黑 (Microsoft YaHei) |
-| **英文字体** | Arial / Calibri |
-| **页码徽章坐标** | x: 9.3", y: 5.1" (位于右下角) |
-| **主题键值合约** | 严格包含 `primary`, `secondary`, `accent`, `light`, `bg` |
+## 可视化与数据换算硬约束 (UI & Data Rules)
+
+1. **色彩系统**：PPT 输出默认使用**品牌绿**配色体系（主色 `027C76`、主品牌绿 `07978D`、高亮 `0FB886`、卡片 `ebf7fa`、背景 `F6FBFC`）。
+2. **数据格式**：所有数值和金额必须携带千分位，金额及百分比保留两位小数。整位数 $\ge 5$ 位换算为“万”，$\ge 9$ 位换算为“亿”。例如：`1,200.00元` / `1.50万元` / `2.06亿元`。
+3. **文本呼吸感**：每页 PPT 正文不超过 4-6 行要点，每行不超过 20 字，严格杜绝文字墙。
 
 ## 参考规章 (References)
 
-- [设计系统规范 (design-system.md)](references/design-system.md) — 包含品牌绿配色色值、字体使用规矩与4类排版风格（Sharp/Soft/Rounded/Pill）的具体间距和圆角设定。
-- [页面类型规范 (slide-types.md)](references/slide-types.md) — 定义了封面页、目录页、过渡页、内容页（6种子类型）与封底页的视觉布局框架。
-- [PptxGenJS API 开发指南 (pptxgenjs-api.md)](references/pptxgenjs-api.md) — 介绍文本、图形、表格和内置图表的核心 API 使用样例。
-- [避坑与 QA 指南 (pitfalls.md)](references/pitfalls.md) — 描述防损坏编译技巧以及通过 markitdown 进行占位符提取的 QA 闭环校验步骤。
-
----
-
-## 主题色合约约束 (Theme Object Contract)
-
-底层编译脚本必须向每一页的 `createSlide(pres, theme)` 注入一个结构完全相同的 `theme` 对象。其键值含义约定如下：
-
-```javascript
-const theme = {
-  primary: "027C76",    // 主题深色，用于页面标题、大色块背景等
-  secondary: "07978D",  // 主品牌色，用于段落正文中需要醒目强调的文字等
-  accent: "0FB886",     // 高亮翠绿，用于流程步骤序号、特殊点缀等
-  light: "ebf7fa",      // 浅色点缀，用于内容卡片的背景色等
-  bg: "F6FBFC"          // 页面底色，用于整页幻灯片的背景底色
-};
-```
-当检测到用户要求使用“**品牌绿**”或相关主题时，必须传入上述色值。
-
----
-
-## 依赖声明 (Dependencies)
-
-- `pip install "markitdown[pptx]"` — 提取与 QA 校验
-- `npm install pptxgenjs` — 核心 PPT 生成引擎
-- `npm install sharp react react-dom react-icons` — 矢量图标转 PNG（可选）
+- [主控规章与质量审查 (quality-rules.md)](references/quality-rules.md) — 包含系统 6 阶段自进化工作流、协作规约与徐庶审稿门槛限制。
+- [协同研究团队 (team.md)](references/team.md) — 详细介绍 12+1 位三国谋士的角色定位、专长能力与具体调度阶段。
