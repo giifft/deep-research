@@ -77,3 +77,32 @@ slide.addShape(pres.shapes.RECTANGLE, getCardStyle());
 
 ### 红线四：阴影偏移值 (shadow.offset) 绝对禁止为负数
 若要实现上投影或左投影，请使用正数偏置并调整投影角度（`angle`，如 `270` 代表向上投影），传入负数的 `offset` 会导致幻灯片损坏。
+
+---
+
+## 3. 文字防重叠与碰撞设计铁律 (Overlap & Collision Prevention)
+
+在自动化排版中，为防止文本内容过长自动换行从而遮挡或重叠其他元素，必须严格遵守以下排版铁律：
+
+### PptxGenJS 模式：
+1. **累加坐标计算**：纵向堆叠的元素，其 `y` 坐标必须基于前一个元素的底部计算：`y_next = y_prev + h_prev + gap` (gap 建议不小于 `0.3` 英寸)。绝对禁止使用全死板固定 `y` 坐标定位上下紧邻的文本框。
+2. **文本自适应与缩放**：对于单行标签或数值卡片，必须显式限制最大字号，并设置 `shrinkText: true` 或 `autoFit: true`，确保超长文字能自动压缩字号，而非换行溢出。
+3. **字数与高度匹配**：为标题和正文文本框预留充足的高度 `h`。字号与预留高度匹配估算（16:9 画布）：
+   - 字号 28-36pt：高度 `h` 不低于 `0.6` 英寸。
+   - 字号 14-18pt：高度 `h` 不低于 `0.4` 英寸。
+   - 字号 10-12pt：高度 `h` 不低于 `0.3` 英寸。
+
+### PowerPoint VBA 模式：
+1. **强制自动换行与尺寸自适应**：绘制 Text Frame 时，必须显式指定：
+   ```vba
+   shp.TextFrame.WordWrap = True
+   shp.TextFrame.AutoSize = True ' 自动调整大小防溢出
+   ```
+2. **安全间距**：不同文本框或卡片图形之间，纵向预留至少 `20px` ~ `30px` 的安全间距。
+
+### Marp Markdown 模式：
+1. **Flex 弹性包裹**：卡片与文本框必须采用 Flex/Grid 流式排版，禁止使用任何绝对定位 (`position: absolute; top: ...`) 强制锁死纵向坐标。
+2. **设置行高防碰撞**：全局 CSS 必须设置合理的行高：
+   - 标题级 `line-height: 1.3` ~ `1.4`
+   - 正文级 `line-height: 1.5` ~ `1.6`
+3. **滚动截断保护**：对溢出可能很大的文本容器，采用 `overflow: hidden; text-overflow: ellipsis;` 进行保护。

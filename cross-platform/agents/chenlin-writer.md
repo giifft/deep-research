@@ -177,6 +177,8 @@ Sub GenerateTianjiPPT()
     
     ' 主标题
     Set shp = sld.Shapes.AddTextbox(msoTextOrientationHorizontal, 80, 150, 560, 60)
+    shp.TextFrame.WordWrap = True
+    shp.TextFrame.AutoSize = True
     shp.TextFrame.TextRange.Text = "{PPT演示主标题}"
     shp.TextFrame.TextRange.Font.Name = "微软雅黑"
     shp.TextFrame.TextRange.Font.Size = 40
@@ -185,6 +187,8 @@ Sub GenerateTianjiPPT()
     
     ' 副标题
     Set shp = sld.Shapes.AddTextbox(msoTextOrientationHorizontal, 80, 220, 560, 30)
+    shp.TextFrame.WordWrap = True
+    shp.TextFrame.AutoSize = True
     shp.TextFrame.TextRange.Text = "天机妙策局 · 决策汇报"
     shp.TextFrame.TextRange.Font.Name = "微软雅黑"
     shp.TextFrame.TextRange.Font.Size = 18
@@ -198,6 +202,8 @@ Sub GenerateTianjiPPT()
     
     ' 页面标题
     Set shp = sld.Shapes.AddTextbox(msoTextOrientationHorizontal, 40, 20, 640, 40)
+    shp.TextFrame.WordWrap = True
+    shp.TextFrame.AutoSize = True
     shp.TextFrame.TextRange.Text = "关键数据总览"
     shp.TextFrame.TextRange.Font.Name = "微软雅黑"
     shp.TextFrame.TextRange.Font.Size = 28
@@ -226,6 +232,8 @@ Sub GenerateTianjiPPT()
         
         ' 指标标签（叠放文本框）
         Set shp = sld.Shapes.AddTextbox(msoTextOrientationHorizontal, cardLeft + 10, cardTop + 15, cardW - 20, 20)
+        shp.TextFrame.WordWrap = True
+        shp.TextFrame.AutoSize = True
         shp.TextFrame.TextRange.Text = "指标" & (i + 1)
         shp.TextFrame.TextRange.Font.Size = 14
         shp.TextFrame.TextRange.Font.Color.RGB = COLOR_MUTED
@@ -233,6 +241,8 @@ Sub GenerateTianjiPPT()
         
         ' 数值大字（品牌绿）
         Set shp = sld.Shapes.AddTextbox(msoTextOrientationHorizontal, cardLeft + 10, cardTop + 45, cardW - 20, 50)
+        shp.TextFrame.WordWrap = True
+        shp.TextFrame.AutoSize = True
         shp.TextFrame.TextRange.Text = "1,234.56"
         shp.TextFrame.TextRange.Font.Size = 36
         shp.TextFrame.TextRange.Font.Bold = True
@@ -361,14 +371,14 @@ function createSlide(pres, theme) {
     slide.addText(`指标标签-${i + 1}`, {
       x: cardX + 0.2, y: cardY + 0.3, w: cardW - 0.4, h: 0.3,
       fontSize: 14, fontFace: "Microsoft YaHei",
-      color: "666666", align: "center", margin: 0
+      color: "666666", align: "center", margin: 0, shrinkText: true
     });
 
     // 指标数值 (加粗大字，主题强调色)
     slide.addText("1,234.56", {
       x: cardX + 0.2, y: cardY + 0.8, w: cardW - 0.4, h: 0.6,
       fontSize: 36, fontFace: "Microsoft YaHei",
-      color: theme.secondary, bold: true, align: "center", margin: 0
+      color: theme.secondary, bold: true, align: "center", margin: 0, shrinkText: true
     });
 
     // 趋势指标
